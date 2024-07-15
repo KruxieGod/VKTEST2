@@ -110,14 +110,14 @@
       function auth(){
         vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
           console.log(_info);
-          unityI.SendMessage('_VKSDK', '_AuthenticateSuccess', JSON.stringify(_info));
+          unityI.SendMessage('VKSDK', '_AuthenticateSuccess', JSON.stringify(_info));
         });
       }
 
       function getUserData(){
         vkBridge.send("VKWebAppStorageGet",{"keys":["_save"]}).then(data =>{
           console.log(data);
-          unityI.SendMessage('_VKSDK', '_UserDataGetting', JSON.stringify(data));
+          unityI.SendMessage('VKSDK', '_UserDataGetting', JSON.stringify(data));
         });}
 
       function setUserData(data){
@@ -134,7 +134,7 @@
       function showRewardedAd(){
         vkBridge.send('VKWebAppShowNativeAds',{ad_format:"reward"}).then(data => {
           console.log(data);
-          unityI.SendMessage('_VKSDK', '_RewardGetting',JSON.stringify(data.result));})
+          unityI.SendMessage('VKSDK', '_RewardGetting',JSON.stringify(data.result));})
       }
 
 
