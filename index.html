@@ -137,7 +137,7 @@
           ad_format: 'reward'
         })
                 .then((data) => {
-                  unityI.SendMessage('VKSDK','_CheckRewardedAds',data.result);
+                  unityI.SendMessage('VKSDK','_CheckRewardedAds',data.result.toString());
                   console.log(data.result);
                 });
       }
