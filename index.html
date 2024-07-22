@@ -110,14 +110,14 @@
       function auth(){
         vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
           console.log(_info);
-          unityI.SendMessage('_VKSDK', '_AuthenticateSuccess', JSON.stringify(_info));
+          unityI.SendMessage('VKSDK', '_AuthenticateSuccess', JSON.stringify(_info));
         });
       }
 
       function getUserData(){
         vkBridge.send("VKWebAppStorageGet",{"keys":["_save"]}).then(data =>{
           console.log(data);
-          unityI.SendMessage('_VKSDK', '_UserDataGetting', JSON.stringify(data));
+          unityI.SendMessage('VKSDK', '_UserDataGetting', JSON.stringify(data));
         });}
 
       function setUserData(data){
@@ -130,11 +130,22 @@
         vkBridge.send('VKWebAppShowNativeAds',{ad_format:"interstitial"}).then(data => {
           console.log(data);});
       }
+      
+      function checkRewardedAds()
+      {
+        vkBridge.send('VKWebAppCheckNativeAds', {
+          ad_format: 'reward'
+        })
+                .then((data) => {
+                  unityI.SendMessage('VKSDK','_CheckRewardedAds',data.result.toString());
+                  console.log(data.result);
+                });
+      }
 
       function showRewardedAd(){
         vkBridge.send('VKWebAppShowNativeAds',{ad_format:"reward"}).then(data => {
           console.log(data);
-          unityI.SendMessage('_VKSDK', '_RewardGetting',JSON.stringify(data.result));})
+          unityI.SendMessage('VKSDK', '_RewardGetting',JSON.stringify(data.result));})
       }
 
 
