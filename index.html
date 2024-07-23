@@ -122,13 +122,8 @@
 
       function setUserData(data){
         console.log(data);
-        vkBridge.send('VKWebAppStorageSet',{"key": "_save" , "value": data}).then(_info =>
-        {
-          if (_info.result)
-            console.log("Saved!");
-          else
-            console.log("NoSaved!");
-        });
+        vkBridge.send('VKWebAppStorageSet',{"key": "_save" , "value": data}).then(_info =>{
+          console.log("Saved!")});
       }
 
       function showFullscreenAd(){
